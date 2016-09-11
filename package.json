@@ -5,7 +5,7 @@
   "main": "./dist/bundle.js",
   "scripts": {
     "postinstall": "typings install",
-    "build": "tsc",
+    "build": "webpack --progress --coltch --config ./webpack.config.dev.js",
     "prestart": "npm run build",
     "start": "electron ."
   },
