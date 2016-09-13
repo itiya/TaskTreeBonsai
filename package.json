@@ -2,7 +2,7 @@
   "name": "TaskTreeBonsai",
   "version": "0.0.1",
   "description": "",
-  "main": "./dist/bundle.js",
+  "main": "./dist/main.bundle.js",
   "scripts": {
     "postinstall": "typings install",
     "build": "webpack --progress --coltch --config ./webpack.config.dev.js",

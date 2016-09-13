@@ -1,10 +1,13 @@
 var path = require('path');
 
 module.exports = {
-    entry: "./src/main.ts",
+    entry: {
+        main: "./src/main/main.ts",
+        render: "./src/render/render.ts"
+    },
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: "bundle.js"
+        filename: "[name].bundle.js"
     },
     target: "electron",
     node: {
