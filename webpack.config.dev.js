@@ -3,7 +3,7 @@ var path = require('path');
 module.exports = {
     entry: {
         main: "./src/main/main.ts",
-        render: "./src/render/render.ts"
+        renderer: "./src/renderer/renderer.tsx"
     },
     output: {
         path: path.join(__dirname, 'dist'),
