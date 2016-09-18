@@ -19,8 +19,8 @@ class MyApplication {
 
     onReady(){
         this.mainWindow = new BrowserWindow({
-            width: 800,
-            height: 400,
+            width: 1200,
+            height: 800,
             minWidth: 500,
             minHeight: 200,
             acceptFirstMouse: true,
