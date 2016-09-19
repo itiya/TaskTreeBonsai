@@ -4,13 +4,18 @@ import Project = require('./project.tsx')
 var styles = require("./projectList.css");
 
 export interface Props{
-    projects: Project.Props[];
+    projects: {
+        id: number,
+        name: string
+    }[];
 }
 
 export class ProjectList extends React.Component<Props, any> {
     render() {
         var projects = this.props.projects.map(function (project) {
-            return (<li key={project.id}>{project.name}</li>);
+            return (
+                <Project.Project key={project.id} name={project.name} />
+            );
         })
         return (
             <ul className={styles.projectList}>

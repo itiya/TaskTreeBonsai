@@ -8,7 +8,10 @@ var styles = require('./root.css');
 export interface Props {
     data: {
         slogan: string;
-        projectList: Project.Props[];
+        projectList: {
+            id: number,
+            name: string
+        }[];
     }
 }
 
