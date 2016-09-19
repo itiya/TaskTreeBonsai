@@ -1,5 +1,6 @@
 /// <reference path="../../../../typings/index.d.ts" />
 import * as React from 'react'
+var styles = require("./slogan.css");
 
 interface Props{
     slogan: string;
@@ -8,7 +9,7 @@ interface Props{
 export class Slogan extends React.Component<Props, any> {
     render() {
         return (
-            <div className="slogan">
+            <div className={styles.slogan}>
                 {this.props.slogan}
             </div>
         );
