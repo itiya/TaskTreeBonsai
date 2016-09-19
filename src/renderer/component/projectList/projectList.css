@@ -1,5 +1,7 @@
 .projectList{
     width: 200px;
-    height: 100%;
+    height: calc(100% - 56px);
     background-color: midnightblue;
+    margin: 0px;
+    padding: 0px;
 }

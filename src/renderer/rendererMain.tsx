@@ -3,4 +3,12 @@ import * as React from 'react'
 import * as ReactDom from 'react-dom'
 import Root = require('./component/root.tsx');
 
-ReactDom.render(<Root.Root slogan="Prove your faith" />, document.getElementById('root'));
+var data = {
+    slogan: "Prove your faith",
+    projectList: [
+        {id: 0, name: "First Project"},
+        {id: 1, name: "Second Project"}
+    ]
+}
+
+ReactDom.render(<Root.Root data={data} />, document.getElementById('root'));
