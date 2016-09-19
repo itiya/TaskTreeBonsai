@@ -10,7 +10,7 @@ export class Slogan extends React.Component<Props, any> {
     render() {
         return (
             <div className={styles.slogan}>
-                {this.props.slogan}
+                <div className={styles.text}>{this.props.slogan}</div>
             </div>
         );
     }
