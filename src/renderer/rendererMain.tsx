@@ -7,7 +7,9 @@ var data = {
     slogan: "Prove your faith",
     projectList: [
         {id: 0, name: "First Project"},
-        {id: 1, name: "Second Project"}
+        {id: 1, name: "Second Project"},
+        {id: 2, name: "Third Project"},
+        {id: 3, name: "Fourth Project"}
     ]
 }
 
