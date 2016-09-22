@@ -1,4 +1,4 @@
-/// <reference path="../../../../typings/index.d.ts" />
+/// <reference path="../../../../../typings/index.d.ts" />
 import * as React from 'react'
 import Project = require('./project.tsx')
 var styles = require("./projectList.css");
@@ -18,9 +18,12 @@ export class ProjectList extends React.Component<Props, any> {
             );
         })
         return (
-            <ul className={styles.projectList}>
+            <div className={styles.projectList}>
+            
+            <ul className={styles.ul}>
                 {projects}
             </ul>
+            </div>
         );
     }
 }

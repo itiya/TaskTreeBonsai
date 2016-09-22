@@ -4,4 +4,10 @@
     background-color: black;
     margin: 0px;
     padding: 0px;
+    float: left;
+}
+
+.ul {
+    margin: 0px;
+    padding: 0px;
 }
