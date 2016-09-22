@@ -1,0 +1,10 @@
+.taskList {
+    width: calc(100% - 200px);
+    height: calc(100% - 57px);
+    float: left;
+}
+
+.ul {
+    margin: 0px;
+    padding: 0px;
+}

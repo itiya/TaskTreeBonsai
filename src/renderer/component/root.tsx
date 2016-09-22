@@ -21,6 +21,7 @@ export class Root extends React.Component<Props, any> {
             <div className={styles.root}>
                 <Slogan.Slogan slogan={this.props.data.slogan} />
                 <ProjectList.ProjectList projects={this.props.data.projectList} />
+                <TaskList.TaskList tasks={this.props.data.projectList[0].tasks}/>
             </div>
         );
     }
