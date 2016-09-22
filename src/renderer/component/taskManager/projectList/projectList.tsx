@@ -3,11 +3,10 @@ import * as React from 'react'
 import Project = require('./project.tsx')
 var styles = require("./projectList.css");
 
+import DomainProject = require('../../../../domain/project');
+
 export interface Props{
-    projects: {
-        id: number,
-        name: string
-    }[];
+    projects: DomainProject.Project[];
 }
 
 export class ProjectList extends React.Component<Props, any> {
