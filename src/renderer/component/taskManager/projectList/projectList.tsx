@@ -19,10 +19,9 @@ export class ProjectList extends React.Component<Props, any> {
         })
         return (
             <div className={styles.projectList}>
-            
-            <ul className={styles.ul}>
-                {projects}
-            </ul>
+                <ul className={styles.ul}>
+                    {projects}
+                </ul>
             </div>
         );
     }
