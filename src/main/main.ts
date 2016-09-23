@@ -24,7 +24,6 @@ class MyApplication {
             minWidth: 500,
             minHeight: 200,
             acceptFirstMouse: true,
-            titleBarStyle: 'hidden',
             autoHideMenuBar: true
         });
         
