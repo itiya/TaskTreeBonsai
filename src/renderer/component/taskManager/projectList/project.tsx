@@ -7,9 +7,13 @@ export interface Props{
 }
 
 export class Project extends React.Component<Props, any> {
+    handleOnClick(event: React.MouseEvent) {
+        console.log("click:"+this.props.name);
+    }
+
     render() {
         return (
-            <li className={styles.project}>
+            <li className={styles.project} onClick={(event) => this.handleOnClick(event)}>
                 {this.props.name}
             </li>
         )
