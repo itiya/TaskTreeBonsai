@@ -11,7 +11,11 @@ var data = {
             name: "First Project",
             tasks: [{
                 id: 0,
-                name: "task1"
+                name: "task1",
+                subTasks: [{
+                    id: 4,
+                    name: "subTask1"
+                }]
             }]
         },
         {

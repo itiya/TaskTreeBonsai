@@ -3,4 +3,10 @@
     font-size: 20px;
     border-radius: 8px;
     padding-left: 20px;
+    border-right: 1px solid #000000;  
+    border-bottom: 1px solid #000000;  
+}
+
+.list {
+    list-style: none;
 }

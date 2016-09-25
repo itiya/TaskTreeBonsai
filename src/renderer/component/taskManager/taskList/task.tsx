@@ -10,9 +10,23 @@ export interface Props{
 
 export class Task extends React.Component<Props, any> {
     render() {
+        var subTasks: JSX.Element[]; 
+        if(this.props.task.subTasks != null){
+            subTasks = this.props.task.subTasks.map(function(task){
+               return (<Task key={task.id} task={task}/>)
+            })
+        }else{
+            subTasks = null
+        }
+        
         return (
-            <li className={styles.task}>
-                {this.props.task.name}
+            <li>
+                <div className={styles.task}>
+                    {this.props.task.name}
+                </div>
+                <ul className={styles.list}>
+                    {subTasks}
+                </ul>
             </li>
         );
     }
