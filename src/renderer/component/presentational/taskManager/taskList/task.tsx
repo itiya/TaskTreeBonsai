@@ -1,8 +1,8 @@
-/// <reference path="../../../../../typings/index.d.ts" />
+/// <reference path="../../../../../../typings/index.d.ts" />
 import * as React from 'react'
 var styles = require("./task.css");
 
-import DomainTask = require("../../../../domain/task");
+import DomainTask = require("../../../../../domain/task");
 
 export interface Props{
     task: DomainTask.Task;

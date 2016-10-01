@@ -1,12 +1,14 @@
-/// <reference path="../../../../../typings/index.d.ts" />
+/// <reference path="../../../../../../typings/index.d.ts" />
 import * as React from 'react'
 import Project = require('./project.tsx')
 var styles = require("./projectList.css");
 
-import DomainProject = require('../../../../domain/project');
+import DomainProject = require('../../../../../domain/project');
+import { Dispatch } from 'redux'
 
 export interface Props{
     projects: DomainProject.Project[];
+    callBack: Dispatch<any>;
 }
 
 export class ProjectList extends React.Component<Props, any> {
