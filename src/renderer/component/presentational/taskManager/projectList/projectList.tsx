@@ -8,14 +8,16 @@ import { Dispatch } from 'redux'
 
 export interface Props{
     projects: DomainProject.Project[];
+    selectedProjectId: number;
     callBack: Dispatch<any>;
 }
 
 export class ProjectList extends React.Component<Props, any> {
     render() {
+        var that = this;
         var projects = this.props.projects.map(function (project) {
-            return (
-                <Project.Project key={project.id} name={project.name} />
+            return(
+                <Project.Project key={project.id} name={project.name} selected={project.id === that.props.selectedProjectId} />
             );
         })
         return (

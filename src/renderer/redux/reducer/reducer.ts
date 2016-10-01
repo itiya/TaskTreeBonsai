@@ -3,6 +3,7 @@ import DomainProject = require('../../../domain/project')
 
 const initialState = {
     slogan: "Prove your faith",
+    selectedProjectId: 0,
     projectList: [
         {
             id: 0,
@@ -45,6 +46,7 @@ const initialState = {
 
 export interface TaskTreeBonsaiState {
     slogan: string;
+    selectedProjectId: number;
     projectList: DomainProject.Project[];
 }
 
