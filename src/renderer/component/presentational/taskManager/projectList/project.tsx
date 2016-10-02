@@ -4,14 +4,11 @@ var styles = require('./project.css');
 
 export interface Props{
     name: string,
-    selected: boolean
+    selected: boolean,
+    onClick: () => void
 }
 
 export class Project extends React.Component<Props, any> {
-    handleOnClick(event: React.MouseEvent) {
-        console.log("click:"+this.props.name);
-    }
-
     render() {
         var projectStyle = styles.project;
         if (this.props.selected) {
@@ -19,7 +16,7 @@ export class Project extends React.Component<Props, any> {
             projectStyle += styles.selected;
         }
         return (
-            <li className={projectStyle} onClick={(event) => this.handleOnClick(event)}>
+            <li className={projectStyle} onClick={(event) => this.props.onClick()}>
                 {this.props.name}
             </li>
         )

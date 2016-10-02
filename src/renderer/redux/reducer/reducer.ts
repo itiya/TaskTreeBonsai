@@ -51,6 +51,7 @@ export interface TaskTreeBonsaiState {
 }
 
 const taskTreeBonsai = (state: TaskTreeBonsaiState = initialState, action: Object) => {
+    console.log(action);
     return state;
 }
 
