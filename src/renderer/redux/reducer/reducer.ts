@@ -44,23 +44,21 @@ const initialProjectList =
 
 
 
-function slogan(state: string = "Prove Your Faith", action: Actions.ChangeProject) {
+function slogan(state: string = "Prove Your Faith", action: Actions.Action<any>) {
     switch(action.type) {
         default:
             return state;
     }
 }
 
-function selectedProjectId(state: number = 0, action: Actions.ChangeProject) {
-    switch(action.type) {
-        case 'CHANGE_PROJECT':
-            return action.id;
-        default:
-            return state;
-    }
-}
 
-function projectList(state: DomainProject.Project[] = initialProjectList, action: Actions.ChangeProject) {
+const selectedProjectId = Actions.createReducer(0,
+{
+    CHANGE_PROJECT: (action: Actions.CHANGE_PROJECT) => s =>
+        s = action.payload
+})
+
+function projectList(state: DomainProject.Project[] = initialProjectList, action: Actions.Action<any>) {
     switch(action.type) {
         default:
             return state;
