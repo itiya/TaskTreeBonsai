@@ -21,7 +21,8 @@ export class Task extends React.Component<Props, any> {
         
         return (
             <li>
-                <div className={styles.task}>
+                <div className={styles.box}>
+                    <div className={styles.displayChildren} />
                     {this.props.task.name}
                 </div>
                 <ul className={styles.list}>

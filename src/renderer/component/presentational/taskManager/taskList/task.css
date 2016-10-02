@@ -1,12 +1,25 @@
-.task {
+.box {
     background-color: cadetblue;
     font-size: 20px;
     border-radius: 8px;
-    padding-left: 20px;
+    padding-left: 6px;
     border-right: 1px solid #000000;  
     border-bottom: 1px solid #000000;  
 }
 
 .list {
     list-style: none;
+}
+
+.displayChildren {
+  position: static;
+  vertical-align: middle;
+  left: 5px;
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  margin-bottom: 3px;
+  border: 2px solid #ddd;
+  background: #ddd;
+  border-radius: 6px;
 }
