@@ -11,7 +11,7 @@
     list-style: none;
 }
 
-.displayChildren {
+.foldChildrenButton {
   position: static;
   vertical-align: middle;
   left: 5px;
