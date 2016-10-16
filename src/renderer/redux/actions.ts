@@ -15,11 +15,21 @@ export function createReducer<T>(defaultState: T, handlers: HandlerMapWithState<
 }
 
 export const DEFAULT = "DEFAULT";
+
 export const CHANGE_PROJECT = "CHANGE_PROJECT";
-export type  CHANGE_PROJECT = Action<number>
+export type  CHANGE_PROJECT = Action<number>;
 export const changeProject = (projectId: number): CHANGE_PROJECT => {
     return {
         type: CHANGE_PROJECT,
         payload: projectId
+    }
+}
+
+export const ADD_PROJECT = "ADD_PROJECT";
+export type  ADD_PROJECT = Action<string>;
+export const addProject = (projectName: string): ADD_PROJECT => {
+    return {
+        type: ADD_PROJECT,
+        payload: projectName
     }
 }

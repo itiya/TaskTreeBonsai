@@ -58,12 +58,11 @@ const selectedProjectId = Actions.createReducer(0,
         s = action.payload
 })
 
-function projectList(state: DomainProject.Project[] = initialProjectList, action: Actions.Action<any>) {
-    switch(action.type) {
-        default:
-            return state;
-    }
-}
+const projectList = Actions.createReducer(initialProjectList,
+{
+    ADD_PROJECT: (action: Actions.ADD_PROJECT) => s =>
+        s
+})
 
 export interface TaskTreeBonsaiState {
     slogan: string;
