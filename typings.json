@@ -4,6 +4,7 @@
   "globalDependencies": {
     "github-electron": "registry:dt/github-electron#1.3.4+20160831020201",
     "node": "registry:dt/node#6.0.0+20160909174046",
+    "object-assign": "registry:dt/object-assign#4.0.1+20161006140353",
     "react": "registry:dt/react#0.14.0+20160829191040",
     "react-dom": "registry:dt/react-dom#0.14.0+20160412154040",
     "react-redux": "registry:dt/react-redux#4.4.0+20160908183346",
