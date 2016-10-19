@@ -6,8 +6,8 @@ import { Dispatch } from 'redux'
 
 const mapStateToProps = (state: Reducer.TaskTreeBonsaiState) => {
     return {
-        projects: state.projectList,
-        selectedProjectId: state.selectedProjectId
+        projects: state.projects.projectList,
+        selectedProjectId: state.projects.selectedProjectId
     }
 }
 

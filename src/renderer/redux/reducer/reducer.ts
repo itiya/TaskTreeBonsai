@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux'
 import Actions = require('../actions')
 import DomainProject = require('../../../domain/project')
+import objectAssign = require('object-assign')
 
-const initialProjectList = 
-[
+const initialProjects = {
+projectList: [
     {
         id: 0,
         name: "First Project",
@@ -40,9 +41,10 @@ const initialProjectList =
             name: "task4"
         }]
     }
-];
-
-
+],
+selectedProjectId: 0,
+nextProjectId: 4
+}
 
 function slogan(state: string = "Prove Your Faith", action: Actions.Action<any>) {
     switch(action.type) {
@@ -51,29 +53,24 @@ function slogan(state: string = "Prove Your Faith", action: Actions.Action<any>)
     }
 }
 
-
-const selectedProjectId = Actions.createReducer(0,
+const projects = Actions.createReducer(initialProjects,
 {
     CHANGE_PROJECT: (action: Actions.CHANGE_PROJECT) => s =>
-        s = action.payload
-})
-
-const projectList = Actions.createReducer(initialProjectList,
-{
-    ADD_PROJECT: (action: Actions.ADD_PROJECT) => s =>
-        s
+        objectAssign({}, s, {selectedProjectId: action.payload})
 })
 
 export interface TaskTreeBonsaiState {
     slogan: string;
-    selectedProjectId: number;
-    projectList: DomainProject.Project[];
+    projects:{
+        projectList: DomainProject.Project[],
+        nextProjectId: number,
+        selectedProjectId: number
+    }
 }
 
 const taskTreeBonsai = combineReducers({
     slogan,
-    selectedProjectId,
-    projectList
+    projects
 })
 
 export default taskTreeBonsai
