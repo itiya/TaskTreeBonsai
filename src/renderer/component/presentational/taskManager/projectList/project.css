@@ -1,6 +1,7 @@
 .project {
     color: rgb(154,164,170);
     padding: 8px;
+    -webkit-user-select: none;
 }
 
 .project:hover, .selected{

@@ -29,7 +29,7 @@ export class Project extends React.Component<Props, State> {
         var projectStyle = styles.project;
         return (
             <li className={projectStyle}>
-                <input className={styles.button} type="button" onClick={(event) => this.buttonOnClick()}/>
+                <div className={styles.button} onClick={(event) => this.buttonOnClick()}>+</div>
                 <input className={styles.text} type="text" value={this.state.inputText} onChange={(event) => this.changeText(event.target as HTMLInputElement)} />
             </li>
         )

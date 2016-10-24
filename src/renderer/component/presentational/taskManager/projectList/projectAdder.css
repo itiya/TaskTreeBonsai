@@ -1,6 +1,18 @@
 .button {
-    color: white;
+    color: lightgray;
     display: inline;
+    padding: 1px 5px 2px 5px;
+    border: solid 1px lightgray;
+    -webkit-user-select: none;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: rgb(101,101,101);
+}
+
+.button:active {
+    padding: 0px 5px 3px 5px;
 }
 
 .text {
