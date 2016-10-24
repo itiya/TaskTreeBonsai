@@ -8,7 +8,7 @@ export interface Props{
     task: DomainTask.Task;
 }
 
-export class Task extends React.Component<Props, any> {
+export class RootTask extends React.Component<Props, any> { 
     render() {
         var subTasks: JSX.Element[]; 
         if(this.props.task.subTasks != null){
@@ -31,4 +31,7 @@ export class Task extends React.Component<Props, any> {
             </li>
         );
     }
+}
+
+export class Task extends RootTask {
 }
