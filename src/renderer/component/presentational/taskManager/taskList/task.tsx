@@ -8,12 +8,12 @@ export interface Props{
     task: DomainTask.Task;
 }
 
-export class RootTask extends React.Component<Props, any> { 
+export class Task extends React.Component<Props, any> { 
     render() {
         var subTasks: JSX.Element[]; 
         if(this.props.task.subTasks != null){
             subTasks = this.props.task.subTasks.map(function(task){
-               return (<Task key={task.id} task={task}/>)
+               return (<ChildTask key={task.id} task={task}/>)
             })
         }else{
             subTasks = null
@@ -33,5 +33,9 @@ export class RootTask extends React.Component<Props, any> {
     }
 }
 
-export class Task extends RootTask {
+export class RootTask extends Task {
+
+}
+
+export class ChildTask extends Task {
 }
