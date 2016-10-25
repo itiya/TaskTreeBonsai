@@ -33,3 +33,12 @@ export const addProject = (projectName: string): ADD_PROJECT => {
         payload: projectName
     }
 }
+
+export const DELETE_PROJECT = "DELETE_PROJECT";
+export type DELETE_PROJECT = Action<number>;
+export const deleteProject = (projectId: number): DELETE_PROJECT => {
+    return {
+        type: DELETE_PROJECT,
+        payload: projectId
+    }
+}
