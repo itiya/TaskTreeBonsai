@@ -5,7 +5,8 @@ var styles = require('./project.css');
 export interface Props{
     name: string,
     selected: boolean,
-    onClick: () => void
+    onClick: () => void,
+    onDeleteButtonClick: () => void;
 }
 
 export class Project extends React.Component<Props, any> {
@@ -17,6 +18,7 @@ export class Project extends React.Component<Props, any> {
         }
         return (
             <li className={projectStyle} onClick={(event) => this.props.onClick()}>
+                <input type="button" onClick={(event) => this.props.onDeleteButtonClick()} />
                 {this.props.name}
             </li>
         )

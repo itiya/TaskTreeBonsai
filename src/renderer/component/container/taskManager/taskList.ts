@@ -5,7 +5,7 @@ import { Dispatch } from 'redux'
 
 const mapStateToProps = (state: Reducer.TaskTreeBonsaiState) => {
     return {
-        task: state.projects.projectList[state.projects.selectedProjectId].rootTask
+        task: state.projects.projectList.filter(project => project.id === state.projects.selectedProjectId)[0].rootTask
     }
 }
 

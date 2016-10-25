@@ -13,6 +13,7 @@ export interface Props{
     selectedProjectId: number;
     onProjectClick: (id: number) => void;
     onProjectAdderClick: (name: string) => void;
+    onProjectDeleteButtonClick: (id: number) => void;
 }
 
 export class ProjectList extends React.Component<Props, any> {
@@ -20,7 +21,13 @@ export class ProjectList extends React.Component<Props, any> {
         var that = this;
         var projects = this.props.projects.map(function (project) {
             return(
-                <Project.Project key={project.id} name={project.name} selected={project.id === that.props.selectedProjectId} onClick={() => that.props.onProjectClick(project.id)} />
+                <Project.Project
+                    key={project.id}
+                    name={project.name}
+                    selected={project.id === that.props.selectedProjectId}
+                    onClick={() => that.props.onProjectClick(project.id)}
+                    onDeleteButtonClick={() => that.props.onProjectDeleteButtonClick(project.id)} 
+                />
             );
         })
         return (

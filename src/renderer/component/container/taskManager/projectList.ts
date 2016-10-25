@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { changeProject, addProject } from '../../../redux/actions'
+import { changeProject, addProject, deleteProject } from '../../../redux/actions'
 import ProjectList = require('../../presentational/taskManager/projectList/projectList')
 import Reducer = require('../../../redux/reducer/reducer');
 import { Dispatch } from 'redux'
@@ -18,6 +18,9 @@ const mapDispatchToProps: Dispatch<any> = (dispatch: Dispatch<any>) => {
         },
         onProjectAdderClick: (name: string) => {
             dispatch(addProject(name))
+        },
+        onProjectDeleteButtonClick: (id: number) => {
+            dispatch(deleteProject(id))
         }
     }
 }
