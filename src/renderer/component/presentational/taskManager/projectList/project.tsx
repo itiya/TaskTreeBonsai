@@ -11,7 +11,9 @@ export interface Props{
 
 export class Project extends React.Component<Props, any> {
     onDeleteButtonClick(event: React.MouseEvent) {
-        this.props.onDeleteButtonClick()
+        if(confirm("Delete [" + this.props.name + "] ?")){
+            this.props.onDeleteButtonClick()
+        }
         event.stopPropagation()
     }
 
