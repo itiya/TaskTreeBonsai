@@ -10,6 +10,11 @@ export interface Props{
 }
 
 export class Project extends React.Component<Props, any> {
+    onDeleteButtonClick(event: React.MouseEvent) {
+        this.props.onDeleteButtonClick()
+        event.stopPropagation()
+    }
+
     render() {
         var projectStyle = styles.project;
         if (this.props.selected) {
@@ -18,7 +23,7 @@ export class Project extends React.Component<Props, any> {
         }
         return (
             <li className={projectStyle} onClick={(event) => this.props.onClick()}>
-                <input type="button" onClick={(event) => this.props.onDeleteButtonClick()} />
+                <input type="button" onClick={(event) =>this.onDeleteButtonClick(event)} />
                 {this.props.name}
             </li>
         )

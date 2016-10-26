@@ -72,8 +72,13 @@ const projects = Actions.createReducer(initialProjects,
             }),
         DELETE_PROJECT: (action: Actions.DELETE_PROJECT) => s => {
             let filteredProjectList = s.projectList.filter(project => project.id != action.payload)
+            var selectedProjectId = s.selectedProjectId
+            if(selectedProjectId === action.payload){
+                selectedProjectId = filteredProjectList[0].id
+            }
             return objectAssign({}, s, {
                 projectList: filteredProjectList,
+                selectedProjectId: selectedProjectId
             })
         }
     }
