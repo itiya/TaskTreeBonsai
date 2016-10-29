@@ -74,7 +74,12 @@ const projects = Actions.createReducer(initialProjects,
             let filteredProjectList = s.projectList.filter(project => project.id != action.payload)
             var selectedProjectId = s.selectedProjectId
             if(selectedProjectId === action.payload){
-                selectedProjectId = filteredProjectList[0].id
+                let index = s.projectList.map((value, index) => value.id === action.payload ? index : 0).reduce((prev, current) => prev + current)
+                if(index === 0) {
+                    selectedProjectId = filteredProjectList[0].id
+                } else {
+                    selectedProjectId = s.projectList[index - 1].id
+                }
             }
             return objectAssign({}, s, {
                 projectList: filteredProjectList,
