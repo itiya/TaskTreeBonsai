@@ -11,7 +11,7 @@ export interface Props{
 
 export class Project extends React.Component<Props, any> {
     onDeleteButtonClick(event: React.MouseEvent) {
-        if(confirm("Delete [" + this.props.name + "] ?")){
+        if(confirm("プロジェクト「" + this.props.name + "」を削除しますか?")){
             this.props.onDeleteButtonClick()
         }
         event.stopPropagation()
@@ -25,7 +25,7 @@ export class Project extends React.Component<Props, any> {
         }
         return (
             <li className={projectStyle} onClick={(event) => this.props.onClick()}>
-                <input type="button" onClick={(event) =>this.onDeleteButtonClick(event)} />
+                <button className={styles.button} onClick={(event) =>this.onDeleteButtonClick(event)}>×</button>
                 {this.props.name}
             </li>
         )
