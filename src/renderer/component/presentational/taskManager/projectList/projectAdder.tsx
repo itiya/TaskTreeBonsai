@@ -23,6 +23,13 @@ export class Project extends React.Component<Props, State> {
         }
     }
 
+    onKeyDown(event: React.KeyboardEvent) {
+        if (event.keyCode === 13){
+            this.setState({inputText: ""})
+            this.props.onClick(this.state.inputText)
+        }
+    }
+
     changeText(target: HTMLInputElement) {
         this.setState({inputText: target.value})
     }
@@ -32,7 +39,13 @@ export class Project extends React.Component<Props, State> {
         return (
             <li className={projectStyle}>
                 <div className={styles.button} onClick={(event) => this.buttonOnClick()}>+</div>
-                <input className={styles.text} type="text" value={this.state.inputText} onChange={(event) => this.changeText(event.target as HTMLInputElement)} />
+                <input
+                    className={styles.text}
+                    type="text"
+                    value={this.state.inputText}
+                    onChange={(event) => this.changeText(event.target as HTMLInputElement)}
+                    onKeyDown={(event: React.KeyboardEvent) => this.onKeyDown(event)}
+                />
             </li>
         )
     }
