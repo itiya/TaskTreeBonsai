@@ -17,8 +17,10 @@ export class Project extends React.Component<Props, State> {
     }
 
     buttonOnClick() {
-        this.setState({inputText: ""})
-        this.props.onClick(this.state.inputText)
+        if (this.state.inputText !== "") {
+            this.setState({inputText: ""})
+            this.props.onClick(this.state.inputText)
+        }
     }
 
     changeText(target: HTMLInputElement) {
