@@ -23,7 +23,7 @@ export class Task extends React.Component<Props, any> {
             <li>
                 <div className={styles.box}>
                     <div className={styles.foldChildrenButton} />
-                    {this.props.task.name}
+                    <div className={styles.text}>{this.props.task.name}</div>
                 </div>
                 <ul className={styles.list}>
                     {subTasks}
