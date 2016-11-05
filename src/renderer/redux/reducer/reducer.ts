@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 import Actions = require('../actions')
 import DomainProject = require('../../../domain/project')
+import DomainTask = require('../../../domain/task')
 import objectAssign = require('object-assign')
 
 const initialProjects = {
@@ -8,37 +9,50 @@ const initialProjects = {
         {
             id: 0,
             name: "First Project",
+            isTaskAdderVisible: false,
             rootTask: {
                 id: 0,
                 name: "task1",
-                subTasks: [{
-                    id: 4,
-                    name: "subTask1"
-                }]
+                isTaskAdderVisible: false,
+                subTasks: Array<DomainTask.Task>({
+                    id: 6,
+                    name: "subTask",
+                    isTaskAdderVisible: false,
+                    subTasks: Array<DomainTask.Task>()
+                })
             }
         },
         {
             id: 1,
             name: "Second Project",
+            isTaskAdderVisible: false,
             rootTask: {
                 id: 1,
-                name: "task2"
+                name: "task2",
+                isTaskAdderVisible: false,
+                subTasks: Array<DomainTask.Task>()                
             }
         },
         {
             id: 2,
             name: "Third Project",
+            isTaskAdderVisible: false,
             rootTask: {
                 id: 2,
-                name: "task3"
+                name: "task3",
+                isTaskAdderVisible: false,
+                subTasks: Array<DomainTask.Task>()                        
             }
         },
         {
             id: 3,
             name: "Fourth Project",
+            isTaskAdderVisible: false,
             rootTask: {
                 id: 3,
-                name: "task4"
+                name: "task4",
+                isTaskAdderVisible: false,
+                subTasks: Array<DomainTask.Task>()            
             }
         }
     ],
@@ -52,6 +66,22 @@ function slogan(state: string = "Prove Your Faith", action: Actions.Action<any>)
         default:
             return state;
     }
+}
+
+function toggleVisible(rootTask: DomainTask.Task, taskId: number): DomainTask.Task {
+    var toggledVisible: boolean
+    if(taskId === rootTask.id){
+        toggledVisible = !rootTask.isTaskAdderVisible
+    } else {
+        toggledVisible = false
+    }
+
+    return objectAssign({}, rootTask, {
+        isTaskAdderVisible: toggledVisible,
+        subTasks: rootTask.subTasks.map((value) => {
+            return toggleVisible(value, taskId)
+        })
+    })
 }
 
 const projects = Actions.createReducer(initialProjects,
@@ -85,7 +115,18 @@ const projects = Actions.createReducer(initialProjects,
                 projectList: filteredProjectList,
                 selectedProjectId: selectedProjectId
             })
+        },
+        TOGGLE_TASK_ADDER: (action: Actions.TOGGLE_TASK_ADDER) => s => {
+            let toggledProjectList = s.projectList.map((value, index, array) => {
+                return objectAssign({}, value, {
+                    rootTask: toggleVisible(value.rootTask, action.payload)
+                })
+            })
+            return objectAssign({}, s, {
+                projectList: toggledProjectList
+            })
         }
+
     }
 )
 

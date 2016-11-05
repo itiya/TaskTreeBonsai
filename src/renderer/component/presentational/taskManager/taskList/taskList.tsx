@@ -7,6 +7,7 @@ import DomainTask = require("../../../../../domain/task");
 
 export interface Props{
     task: DomainTask.Task;
+    onAdderToggleClick: (taskId: number) => void; 
 }
 
 export class TaskList extends React.Component<Props, any> {
@@ -14,7 +15,7 @@ export class TaskList extends React.Component<Props, any> {
         return (
             <div className={styles.taskList}>
                 <ul className={styles.ul}>
-                    <Task.RootTask key={this.props.task.id} task={this.props.task} />
+                    <Task.RootTask key={this.props.task.id} task={this.props.task} onAdderToggleClick={this.props.onAdderToggleClick}/>
                 </ul>
             </div>
         );

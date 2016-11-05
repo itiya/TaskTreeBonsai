@@ -42,3 +42,12 @@ export const deleteProject = (projectId: number): DELETE_PROJECT => {
         payload: projectId
     }
 }
+
+export const TOGGLE_TASK_ADDER = "TOGGLE_TASK_ADDER";
+export type TOGGLE_TASK_ADDER = Action<number>;
+export const toggleTaskAdder = (taskId: number): TOGGLE_TASK_ADDER => {
+    return {
+        type: TOGGLE_TASK_ADDER,
+        payload: taskId
+    }
+}
