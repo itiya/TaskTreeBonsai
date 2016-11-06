@@ -15,7 +15,7 @@ const initialProjects = {
                 name: "task1",
                 isTaskAdderVisible: false,
                 subTasks: Array<DomainTask.Task>({
-                    id: 6,
+                    id: 4,
                     name: "subTask",
                     isTaskAdderVisible: false,
                     subTasks: Array<DomainTask.Task>()
@@ -58,7 +58,7 @@ const initialProjects = {
     ],
     selectedProjectId: 0,
     nextProjectId: 4,
-    nextTaskId: 4
+    nextTaskId: 8
 }
 
 function slogan(state: string = "Prove Your Faith", action: Actions.Action<any>) {
@@ -81,6 +81,23 @@ function toggleVisible(rootTask: DomainTask.Task, taskId: number): DomainTask.Ta
         subTasks: rootTask.subTasks.map((value) => {
             return toggleVisible(value, taskId)
         })
+    })
+}
+
+function addTask(rootTask: DomainTask.Task, parentTaskId: number, addTaskId: number, addTaskName: string): DomainTask.Task {
+    var subTasks = rootTask.subTasks.map((value) => {
+        return addTask(value, parentTaskId, addTaskId, addTaskName)
+    })
+    if(rootTask.id === parentTaskId) {
+        subTasks = [...subTasks, {
+            id: addTaskId,
+            name: addTaskName,
+            isTaskAdderVisible: false,
+            subTasks: []
+        }]
+    }
+    return objectAssign({}, rootTask, {
+        subTasks: subTasks
     })
 }
 
@@ -124,6 +141,17 @@ const projects = Actions.createReducer(initialProjects,
             })
             return objectAssign({}, s, {
                 projectList: toggledProjectList
+            })
+        },
+        ADD_TASK: (action: Actions.ADD_TASK) => s => {
+            let addedProjectList = s.projectList.map((value) => {
+                return objectAssign({}, value, {
+                    rootTask: addTask(value.rootTask, action.payload.parentTaskId, s.nextTaskId, action.payload.addedTaskName)
+                })
+            })
+            return objectAssign({}, s, {
+                projectList: addedProjectList,
+                nextTaskId: s.nextTaskId + 1
             })
         }
 

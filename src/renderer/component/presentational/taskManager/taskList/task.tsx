@@ -8,6 +8,7 @@ import DomainTask = require("../../../../../domain/task");
 export interface Props{
     task: DomainTask.Task;
     onAdderToggleClick: (taskId: number) => void;
+    onTaskAddClick: (parentTaskId: number, addedTaskName: string) => void;
 }
 
 export class Task extends React.Component<Props, any> { 
@@ -16,7 +17,12 @@ export class Task extends React.Component<Props, any> {
         let that = this
         if(this.props.task.subTasks != null){
             subTasks = this.props.task.subTasks.map(function(task){
-               return (<ChildTask key={task.id} task={task} onAdderToggleClick={that.props.onAdderToggleClick}/>)
+                return (
+                    <ChildTask key={task.id} task={task}
+                        onAdderToggleClick={that.props.onAdderToggleClick}
+                        onTaskAddClick={that.props.onTaskAddClick}
+                    />
+                )
             })
         }else{
             subTasks = null
@@ -24,7 +30,7 @@ export class Task extends React.Component<Props, any> {
 
         var taskAdder: JSX.Element;
         if (this.props.task.isTaskAdderVisible) {
-            taskAdder = <TaskAdder.TaskAdder />
+            taskAdder = <TaskAdder.TaskAdder onTaskAddClick={this.props.onTaskAddClick} taskId={this.props.task.id}/>
         } else {
             taskAdder = null
         }

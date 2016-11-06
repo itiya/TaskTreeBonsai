@@ -51,3 +51,15 @@ export const toggleTaskAdder = (taskId: number): TOGGLE_TASK_ADDER => {
         payload: taskId
     }
 }
+
+export const ADD_TASK = "ADD_TASK";
+export type ADD_TASK = Action<{parentTaskId: number, addedTaskName: string}>;
+export const addTask = (parentTaskId: number, addedTaskName: string): ADD_TASK => {
+    return {
+        type: ADD_TASK,
+        payload: {
+            parentTaskId: parentTaskId,
+            addedTaskName: addedTaskName
+        }
+    }
+}
