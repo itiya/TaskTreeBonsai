@@ -1,5 +1,6 @@
 /// <reference path="../../../../../../typings/index.d.ts" />
 import * as React from 'react'
+import * as ReactDOM from 'react-dom'
 
 var taskStyles = require("./task.css");
 var adderStyles = require("./taskAdder.css");
@@ -36,11 +37,18 @@ export class TaskAdder extends React.Component<Props, State> {
         this.setState({inputText: target.value})
     }
 
+    focusInput(input: HTMLInputElement) {
+        if(input){
+            ReactDOM.findDOMNode<HTMLInputElement>(input).focus()
+        }
+    }
+
     render() {
         return (
             <div className={taskStyles.box + " " + adderStyles.adder}>
                 <div className={taskStyles.foldChildrenButton} onClick={(event) => this.addTask()} />
                 <input
+                    ref={this.focusInput}
                     className={adderStyles.text}
                     type="text"
                     value={this.state.inputText}
