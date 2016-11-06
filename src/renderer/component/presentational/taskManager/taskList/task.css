@@ -29,6 +29,20 @@
   border-radius: 6px;
 }
 
+.taskDeleteButton {
+  position: static;
+  vertical-align: middle;
+  left: 5px;
+  width: 13px;
+  height: 13px;
+  float: right;
+  margin-top: 7px;
+  margin-right: 4px;
+  border: 2px solid #ddd;
+  background: #ddd;
+  border-radius: 6px;
+}
+
 .text {
     height: 30px;
     display: inline-block;

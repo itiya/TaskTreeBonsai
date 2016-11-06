@@ -63,3 +63,12 @@ export const addTask = (parentTaskId: number, addedTaskName: string): ADD_TASK =
         }
     }
 }
+
+export const DELETE_TASK = "DELETE_TASK";
+export type DELETE_TASK = Action<number>;
+export const deleteTask = (taskId: number): DELETE_TASK => {
+    return {
+        type: DELETE_TASK,
+        payload: taskId
+    }
+}

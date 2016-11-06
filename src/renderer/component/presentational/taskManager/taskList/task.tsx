@@ -9,6 +9,7 @@ export interface Props{
     task: DomainTask.Task;
     onAdderToggleClick: (taskId: number) => void;
     onTaskAddClick: (parentTaskId: number, addedTaskName: string) => void;
+    onTaskDeleteClick: (deleteTaskId: number) => void;
 }
 
 export class Task extends React.Component<Props, any> { 
@@ -21,6 +22,7 @@ export class Task extends React.Component<Props, any> {
                     <ChildTask key={task.id} task={task}
                         onAdderToggleClick={that.props.onAdderToggleClick}
                         onTaskAddClick={that.props.onTaskAddClick}
+                        onTaskDeleteClick={that.props.onTaskDeleteClick}
                     />
                 )
             })
@@ -41,6 +43,7 @@ export class Task extends React.Component<Props, any> {
                     <div className={styles.foldChildrenButton} />
                     <div className={styles.foldChildrenButton} onClick={() => this.props.onAdderToggleClick(this.props.task.id)}/>
                     <div className={styles.text}>{this.props.task.name}</div>
+                    <div className={styles.taskDeleteButton} onClick={() => this.props.onTaskDeleteClick(this.props.task.id)}/>                    
                 </div>
                 <ul className={styles.list}>
                     {subTasks}

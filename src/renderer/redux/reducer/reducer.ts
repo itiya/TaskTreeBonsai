@@ -68,7 +68,7 @@ function slogan(state: string = "Prove Your Faith", action: Actions.Action<any>)
     }
 }
 
-function toggleVisible(rootTask: DomainTask.Task, taskId: number): DomainTask.Task {
+const toggleVisible = (rootTask: DomainTask.Task, taskId: number): DomainTask.Task => {
     var toggledVisible: boolean
     if(taskId === rootTask.id){
         toggledVisible = !rootTask.isTaskAdderVisible
@@ -84,7 +84,7 @@ function toggleVisible(rootTask: DomainTask.Task, taskId: number): DomainTask.Ta
     })
 }
 
-function addTask(rootTask: DomainTask.Task, parentTaskId: number, addTaskId: number, addTaskName: string): DomainTask.Task {
+const addTask = (rootTask: DomainTask.Task, parentTaskId: number, addTaskId: number, addTaskName: string): DomainTask.Task => {
     var subTasks = rootTask.subTasks.map((value) => {
         return addTask(value, parentTaskId, addTaskId, addTaskName)
     })
@@ -98,6 +98,15 @@ function addTask(rootTask: DomainTask.Task, parentTaskId: number, addTaskId: num
     }
     return objectAssign({}, rootTask, {
         subTasks: subTasks
+    })
+}
+
+const deleteTask = (rootTask: DomainTask.Task, deleteTaskId: number): DomainTask.Task => {
+    var subTasks = rootTask.subTasks.filter((value) => value.id !== deleteTaskId).map((value) => {
+        return deleteTask(value, deleteTaskId)
+    })
+    return objectAssign({}, rootTask, {
+        subTasks: subTasks 
     })
 }
 
@@ -153,8 +162,17 @@ const projects = Actions.createReducer(initialProjects,
                 projectList: addedProjectList,
                 nextTaskId: s.nextTaskId + 1
             })
+        },
+        DELETE_TASK: (action: Actions.DELETE_TASK) => s => {
+            let deletedProjectList = s.projectList.map((value) => {
+                return objectAssign({}, value, {
+                    rootTask: deleteTask(value.rootTask, action.payload)
+                })
+            })
+            return objectAssign({}, s, {
+                projectList: deletedProjectList
+            })
         }
-
     }
 )
 

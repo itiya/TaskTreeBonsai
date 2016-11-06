@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import TaskList = require('../../presentational/taskManager/taskList/taskList')
 import Reducer = require('../../../redux/reducer/reducer');
 import { Dispatch } from 'redux'
-import { toggleTaskAdder, addTask } from '../../../redux/actions'
+import { toggleTaskAdder, addTask, deleteTask } from '../../../redux/actions'
 
 const mapStateToProps = (state: Reducer.TaskTreeBonsaiState) => {
     return {
@@ -17,6 +17,9 @@ const mapDispatchToProps: Dispatch<any> = (dispatch: Dispatch<any>) => {
         },
         onTaskAddClick: (parentTaskId: number, addedTaskName: string) => {
             dispatch(addTask(parentTaskId, addedTaskName))
+        },
+        onTaskDeleteClick: (deleteTaskId: number) => {
+            dispatch(deleteTask(deleteTaskId))
         }
     }
 }
