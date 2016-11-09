@@ -72,3 +72,15 @@ export const deleteTask = (taskId: number): DELETE_TASK => {
         payload: taskId
     }
 }
+
+export const EDIT_TASK = "EDIT_TASK";
+export type EDIT_TASK = Action<{taskId: number, taskName: string}>;
+export const editTask = (taskId: number, taskName: string): EDIT_TASK => {
+    return {
+        type: EDIT_TASK,
+        payload: {
+            taskId: taskId,
+            taskName: taskName
+        }
+    }
+}

@@ -110,6 +110,20 @@ const deleteTask = (rootTask: DomainTask.Task, deleteTaskId: number): DomainTask
     })
 }
 
+const editTask = (rootTask: DomainTask.Task, editTaskId: number, editTaskText: string): DomainTask.Task => {
+    var subTasks = rootTask.subTasks.map((value) => {
+        return editTask(value, editTaskId, editTaskText)
+    })
+    var name = rootTask.name
+    if (rootTask.id === editTaskId) {
+        name = editTaskText
+    } 
+    return objectAssign({}, rootTask, {
+        subTasks: subTasks,
+        name: name
+    })
+}
+
 const projects = Actions.createReducer(initialProjects,
     {
         CHANGE_PROJECT: (action: Actions.CHANGE_PROJECT) => s =>
@@ -172,7 +186,18 @@ const projects = Actions.createReducer(initialProjects,
             return objectAssign({}, s, {
                 projectList: deletedProjectList
             })
+        },
+        EDIT_TASK: (action: Actions.EDIT_TASK) => s => {
+            let editProjectList = s.projectList.map((value) => {
+                return objectAssign({}, value, {
+                    rootTask: editTask(value.rootTask, action.payload.taskId, action.payload.taskName)
+                })
+            })
+            return objectAssign({}, s, {
+                projectList: editProjectList
+            })
         }
+
     }
 )
 

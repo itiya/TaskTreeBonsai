@@ -13,6 +13,7 @@ export interface Props {
     onAdderToggleClick: (taskId: number) => void;
     onTaskAddClick: (parentTaskId: number, addedTaskName: string) => void;
     onTaskDeleteClick: (deleteTaskId: number) => void;
+    onTaskEdit: (editTaskId: number, editTaskName: string) => void;
 }
 
 interface State {
@@ -33,7 +34,12 @@ export class Task extends React.Component<Props, State> {
         this.setState(objectAssign({}, this.state, {isOnEdit: true}))
     }
 
+    changeText(target: HTMLInputElement) {
+        this.setState(objectAssign({}, this.state, {editText: target.value}))
+    }
+
     endEdit() {
+        this.props.onTaskEdit(this.props.task.id, this.state.editText)
         this.setState(objectAssign({}, this.state, {isOnEdit: false}))
     }
 
@@ -45,7 +51,7 @@ export class Task extends React.Component<Props, State> {
 
     taskName() {
         if (this.state.isOnEdit) {
-            return <input type="text" ref={this.focusInput} onBlur={() => this.endEdit()} defaultValue={this.state.editText} /> 
+            return <input type="text" ref={this.focusInput} onBlur={() => this.endEdit()} defaultValue={this.state.editText} onChange={(event) => this.changeText(event.target as HTMLInputElement)} /> 
         } else {
             return <div className={styles.text} onDoubleClick={() => this.startEdit()}>{this.props.task.name}</div>
         }
@@ -61,6 +67,7 @@ export class Task extends React.Component<Props, State> {
                         onAdderToggleClick={that.props.onAdderToggleClick}
                         onTaskAddClick={that.props.onTaskAddClick}
                         onTaskDeleteClick={that.props.onTaskDeleteClick}
+                        onTaskEdit={that.props.onTaskEdit}
                     />
                 )
             })

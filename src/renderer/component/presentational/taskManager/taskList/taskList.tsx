@@ -10,6 +10,7 @@ export interface Props{
     onAdderToggleClick: (taskId: number) => void;
     onTaskAddClick: (parentTaskId: number, addedTaskName: string) => void;
     onTaskDeleteClick: (deleteTaskId: number) => void;
+    onTaskEdit: (editTaskId: number, editTaskName: string) => void;
 }
 
 export class TaskList extends React.Component<Props, any> {
@@ -21,6 +22,7 @@ export class TaskList extends React.Component<Props, any> {
                         onAdderToggleClick={this.props.onAdderToggleClick}
                         onTaskAddClick={this.props.onTaskAddClick}
                         onTaskDeleteClick={this.props.onTaskDeleteClick}
+                        onTaskEdit={this.props.onTaskEdit}
                     />
                 </ul>
             </div>
