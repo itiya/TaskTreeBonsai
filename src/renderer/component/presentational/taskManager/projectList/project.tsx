@@ -7,9 +7,11 @@ var styles = require('./project.css');
 
 export interface Props{
     name: string,
+    id: number,
     selected: boolean,
     onClick: () => void,
     onDeleteButtonClick: () => void;
+    onEditProject: (id: number, name: string) => void;
 }
 
 interface State {
@@ -35,7 +37,7 @@ export class Project extends React.Component<Props, State> {
     }
 
     endEdit() {
-        //this.props.onTaskEdit(this.props.task.id, this.state.editText)
+        this.props.onEditProject(this.props.id, this.state.editText)
         this.setState(objectAssign({}, this.state, {isOnEdit: false}))
     }
 

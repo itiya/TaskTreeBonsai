@@ -196,8 +196,19 @@ const projects = Actions.createReducer(initialProjects,
             return objectAssign({}, s, {
                 projectList: editProjectList
             })
-        }
-
+        },
+        EDIT_PROJECT: (action: Actions.EDIT_PROJECT) => s =>
+            objectAssign({}, s, {
+                projectList: s.projectList.map((value) => {
+                    if (value.id === action.payload.projectId) {
+                        return objectAssign({}, value, {
+                            name: action.payload.projectName
+                        })
+                    } else {
+                        return value
+                    }
+                })
+            })
     }
 )
 

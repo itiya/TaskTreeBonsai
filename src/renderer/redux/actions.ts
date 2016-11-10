@@ -84,3 +84,15 @@ export const editTask = (taskId: number, taskName: string): EDIT_TASK => {
         }
     }
 }
+
+export const EDIT_PROJECT = "EDIT_PROJECT";
+export type EDIT_PROJECT = Action<{projectId: number, projectName: string}>
+export const editProject = (projectId: number, projectName: string): EDIT_PROJECT => {
+    return {
+        type: EDIT_PROJECT,
+        payload: {
+            projectId: projectId,
+            projectName: projectName
+        }
+    }
+}

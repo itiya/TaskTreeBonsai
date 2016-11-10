@@ -14,6 +14,7 @@ export interface Props{
     onProjectClick: (id: number) => void;
     onProjectAdderClick: (name: string) => void;
     onProjectDeleteButtonClick: (id: number) => void;
+    onProjectEdit: (id: number, name: string) => void;
 }
 
 export class ProjectList extends React.Component<Props, any> {
@@ -24,9 +25,11 @@ export class ProjectList extends React.Component<Props, any> {
                 <Project.Project
                     key={project.id}
                     name={project.name}
+                    id={project.id}
                     selected={project.id === that.props.selectedProjectId}
                     onClick={() => that.props.onProjectClick(project.id)}
                     onDeleteButtonClick={() => that.props.onProjectDeleteButtonClick(project.id)} 
+                    onEditProject={that.props.onProjectEdit}
                 />
             );
         })
